@@ -1,2 +1,2 @@
-# ai
+# lingko.github.io
 homepage
