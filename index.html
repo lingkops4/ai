@@ -9,6 +9,16 @@
 </head>
 <body>
 <!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+
+<style id="webmakerstyle">
+
+</style>
+</head>
+<body>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8" />
@@ -555,11 +565,33 @@ body::before {
     };
     playlistUI.appendChild(btn);
   });
+
+  // 拖曳本地檔案到影片區域播放
+  var videoEl = document.getElementById("my-video");
+  videoEl.addEventListener("dragover", e => {
+    e.preventDefault();
+    videoEl.style.opacity = "0.7";
+  });
+  videoEl.addEventListener("dragleave", e => {
+    e.preventDefault();
+    videoEl.style.opacity = "1";
+  });
+  videoEl.addEventListener("drop", e => {
+    e.preventDefault();
+    videoEl.style.opacity = "1";
+    var file = e.dataTransfer.files[0];
+    if (!file) return;
+    var type = file.type;
+    if (!type.startsWith("video/")) { alert("只支援影片檔案"); return; }
+    var url = URL.createObjectURL(file);
+    player.src([{ src: url, type: type }]);
+    player.load();
+    player.play();
+  });
 </script>
 
 </body>
 </html>
-
 
 
 
