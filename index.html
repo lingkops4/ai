@@ -6,6 +6,19 @@
 <meta charset="UTF-8" />
 
 <style id="webmakerstyle">
+ <button onclick="playBeep()">點我</button>
+
+<script>
+function playBeep() {
+  const ctx = new (window.AudioContext || window.webkitAudioContext)();
+  const oscillator = ctx.createOscillator();
+  oscillator.type = "sine"; // 可以試 square, sawtooth, triangle
+  oscillator.frequency.setValueAtTime(440, ctx.currentTime); // Hz
+  oscillator.connect(ctx.destination);
+  oscillator.start();
+  oscillator.stop(ctx.currentTime + 0.15); // 0.15 秒短音
+}
+</script>
 
 </style>
 </head>
