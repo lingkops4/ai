@@ -1,0 +1,63 @@
+.hero {
+  text-align: center;
+  padding: 100px 10px;
+
+  color: ;
+  animation: riseUp 1.2s ease-out forwards, floaty 4s ease-in-out infinite;
+  opacity: 0;
+  transform: translateY(50px);
+}
+
+@keyframes riseUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floaty {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+ {
+  flex-direction: row;
+}
+<style>
+  .cards-wrapper {
+    display: flex;
+    flex-wrap: wrap;           /* 小螢幕會自動換行 */
+    gap: 2.5rem;               /* 兩卡片之間距離 */
+    justify-content: center;   /* 置中排列 */
+    margin: 4rem auto;
+    max-width: 1100px;         /* 避免太寬撐開畫面 */
+    padding: 0 1rem;
+  }
+
+  .stage {
+    flex: 1 1 320px;           /* 彈性尺寸，最小約320px */
+    max-width: 480px;          /* 單個卡片不要太寬 */
+    min-width: 300px;          /* 避免過窄 */
+  }
+
+  /* 手機上自動變成上下排列 */
+  @media (max-width: 768px) {
+    .cards-wrapper {
+      flex-direction: column;
+      gap: 3.5rem;
+    }
+    
+    .stage {
+      max-width: 100%;
+    }
+  }
+
+  /* 讓整體看起來更平衡（可選微調） */
+  .floating-card {
+    min-height: 180px;         /* 避免兩個卡片高度差太多 */
+  }
+</style>
